@@ -1,0 +1,4 @@
+Models\ModeloListaPalabras.class
+Controllers\ControladorListaPalabras.class
+Main\GestorDePalabrasApp.class
+Views\VistaListaPalabras.class
