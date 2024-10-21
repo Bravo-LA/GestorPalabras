@@ -52,9 +52,13 @@ public class VistaListaPalabras {
     }
 
     private void eliminarPalabra() {
-        System.out.print("Ingresa la palabra que deseas eliminar: ");
-        String palabra = scanner.nextLine();
-        controlador.eliminarPalabra(palabra);
+        if (controlador.listaVacia()) {
+            System.out.println("La lista de palabras está vacía.");
+        } else {
+            System.out.print("Ingresa la palabra que deseas eliminar: ");
+            String palabra = scanner.nextLine();
+            controlador.eliminarPalabra(palabra);
+        }
     }
 
     private void editarPalabra() {

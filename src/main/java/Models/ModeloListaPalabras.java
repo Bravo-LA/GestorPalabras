@@ -30,6 +30,10 @@ public class ModeloListaPalabras {
         return false;
     }
 
+    public boolean listaVacia() {
+        return listaDePalabras.isEmpty();
+    }
+
     public ArrayList<String> obtenerListaPalabras() {
         return listaDePalabras;
     }

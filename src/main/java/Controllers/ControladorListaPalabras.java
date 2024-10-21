@@ -24,7 +24,10 @@ public class ControladorListaPalabras {
     }
     
     public void eliminarPalabra(String palabra) {
-        if (modelo.eliminarPalabra(palabra)) {
+        if (modelo.listaVacia()){
+            System.out.println("La lista de palabras está vacía.");
+        }
+        else if (modelo.eliminarPalabra(palabra)) {
             System.out.println("Palabra eliminada: " + palabra);
         } else {
             System.out.println("La palabra \"" + palabra + "\" no se encontró en la lista.");
@@ -37,5 +40,9 @@ public class ControladorListaPalabras {
         } else {
             System.out.println("La palabra \"" + palabraVieja + "\" no se encontró en la lista.");
         }
+    }
+
+    public boolean listaVacia() {
+        return modelo.listaVacia();
     }
 }
