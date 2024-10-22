@@ -38,10 +38,19 @@ public class VistaListaPalabras {
             }
         }
     }
-    
+
     private void agregarPalabra() {
-        System.out.print("Ingresa la palabra que deseas agregar: ");
-        String palabra = scanner.nextLine();
+        String palabra;
+        do {
+            System.out.print("Ingresa la palabra que deseas agregar: ");
+            palabra = scanner.nextLine();
+            if (palabra == null || palabra.isEmpty()) {
+                System.out.println("No se puede dejar en blanco.");
+            } else if (!palabra.matches("[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+")) {
+                System.out.println("La palabra contiene caracteres no válidos.");
+                palabra = ""; // Reiniciar palabra para repetir el bucle
+            }
+        } while (palabra == null || palabra.isEmpty());
         controlador.agregarPalabra(palabra);
     }
 
@@ -66,6 +75,13 @@ public class VistaListaPalabras {
         String palabraVieja = scanner.nextLine();
         System.out.print("Ingresa la nueva palabra: ");
         String palabraNueva = scanner.nextLine();
-        controlador.editarPalabra(palabraVieja, palabraNueva);
+
+        if (palabraNueva.isEmpty()) {
+            System.out.println("No se puede dejar en blanco.");
+        } else if (!palabraNueva.matches("[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+")) {
+            System.out.println("La nueva palabra contiene caracteres no válidos.");
+        } else {
+            controlador.editarPalabra(palabraVieja, palabraNueva);
+        }
     }
 }
