@@ -14,12 +14,21 @@ public class ControladorListaPalabras {
         modelo.agregarPalabra(palabra);
         System.out.println("Palabra agregada: " + palabra);
     }
-    
+
     public void buscarPalabra(String palabra) {
-        if (modelo.buscarPalabra(palabra)) {
-            System.out.println("La palabra \"" + palabra + "\" existe en la lista.");
+        // Requisito CP_BUSCAR_003: Manejar lista vacía
+        if (modelo.listaVacia()) {
+            System.out.println("La lista está vacía.");
+        }
+        // Requisito CP_BUSCAR_004: Manejar caracteres especiales
+        else if (!palabra.matches("[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+")) {
+            System.out.println("La palabra contiene caracteres especiales no válidos."); // CP_BUSCAR_004
+        }
+        // Requisito CP_BUSCAR_001 y CP_BUSCAR_002: Buscar palabra existente o no
+        else if (modelo.buscarPalabra(palabra)) {
+            System.out.println("La palabra \"" + palabra + "\" existe en la lista.");  // CP_BUSCAR_001
         } else {
-            System.out.println("La palabra \"" + palabra + "\" no se encuentra en la lista.");
+            System.out.println("La palabra \"" + palabra + "\" no se encuentra en la lista.");  // CP_BUSCAR_002
         }
     }
     
